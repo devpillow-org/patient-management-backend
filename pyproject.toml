@@ -1,0 +1,39 @@
+[project]
+version = "0.1.0"
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 88
+exclude = [
+    ".git",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "venv",
+    "./*/migrations/*",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "B"]
+extend-select = ["E501", "SIM", "DJ", "TCH", "INT"]
+
+fixable = ["ALL"]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"patient_management/settings/development.py" = ["F405", "F403", "F401"]
+"patient_management/settings/base.py" = ["E501", "F401"]
+
+
+[tool.mypy]
+strict = "true"
+show_error_codes = true
+ignore_missing_imports = "true"
+exclude = [
+    "^.*\b(migrations)\b.*$",
+]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "patient_management.settings.development"

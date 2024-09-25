@@ -1,0 +1,7 @@
+pre-commit==3.8.0
+ipdb==0.13.13
+mypy==1.11.2
+mypy-extensions==1.0.0
+ruff==0.6.4
+django-stubs[compatible-mypy]
+djangorestframework-stubs[compatible-mypy]
