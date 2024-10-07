@@ -27,9 +27,9 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 
 [tool.mypy]
-strict = "true"
+strict = true
 show_error_codes = true
-ignore_missing_imports = "true"
+ignore_missing_imports = true
 exclude = [
     "^.*\b(migrations)\b.*$",
 ]
