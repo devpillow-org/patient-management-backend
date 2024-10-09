@@ -11,6 +11,13 @@ if TYPE_CHECKING:
     from .user import User
 
 
+class Specialization(models.Model):
+    name = models.CharField("employe specialization", max_length=250)
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class Function(models.Model):
     name = models.CharField("name", max_length=150, unique=True)
     permissions = models.ManyToManyField(
@@ -117,6 +124,12 @@ class EmployeProfile(PermissionsMixin, ModelsBase):
         null=True,
     )
     crm = models.CharField(verbose_name="crm", max_length=150, blank=True, null=True)  # noqa: DJ001
+    specializations = models.ManyToManyField(
+        Specialization,
+        verbose_name="employe specializations",
+        related_name="users",
+        blank=True,
+    )
 
     def __str__(self) -> str:
         return self.first_name or ""

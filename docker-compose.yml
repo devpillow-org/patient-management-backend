@@ -1,7 +1,7 @@
 services:
   django:
     build: .
-    command: [ "sh", "-c", "python -Xfrozen_modules=off -m debugpy --listen 0.0.0.0:5679 manage.py runserver 0.0.0.0:8000" ]
+    command: [ "python", "-m", "gunicorn", "patient_management.asgi:application", "--config", "contrib/gunicorn.conf.py", "--reload" ]
     hostname: patient-management-backend
     container_name: patient-management-django
     volumes:
@@ -16,6 +16,7 @@ services:
 
   postgres:
     image: postgres:16.2-alpine3.19
+    container_name: patient-management-postgres
     volumes:
       - dbdata:/var/lib/postgresql/data
     ports:

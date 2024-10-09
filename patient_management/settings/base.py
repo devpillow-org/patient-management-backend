@@ -39,9 +39,7 @@ THIRD_PARTY_APPS = [
     "rest_framework_simplejwt",
     "django_extensions",
 ]
-LOCAL_APPS = [
-    "account",
-]
+LOCAL_APPS = ["account", "medical_screening"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
