@@ -39,6 +39,8 @@ migrate:
 .PHONY: migrations
 migrations:
 	docker compose run --rm django python manage.py makemigrations $(app_name)
+	sudo chown -R ${USER}:${USER} ./*/migrations
+
 
 .PHONY: show_urls
 show_urls:
